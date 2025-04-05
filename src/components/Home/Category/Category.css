@@ -1,0 +1,55 @@
+/* @import "../../../css-config/mixins.scss"; */
+.shop-by-category {
+    margin: 25px 0;
+}
+
+@media (min-width: 768px) {
+    .shop-by-category {
+        margin: 50px 0;
+    }
+}
+
+.shop-by-category .categories {
+    display: flex;
+    flex-flow: wrap;
+    gap: 10px;
+}
+
+.shop-by-category .categories .category {
+    background-color: #8D6E63; /* Matte Brown Background */
+    width: calc(50% - 5px);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .shop-by-category .categories .category {
+        width: calc(25% - 10px);
+    }
+}
+
+.shop-by-category .categories .category img {
+    width: 100%;
+    display: block;
+    transition: all ease 0.3s;
+}
+
+.shop-by-category .categories .category:hover img {
+    transform: scale(1.2);
+}
+
+/* Optional: Add a subtle overlay on hover for a pinkish effect */
+.shop-by-category .categories .category:hover {
+    position: relative; /* Needed for pseudo-element positioning */
+}
+
+.shop-by-category .categories .category:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(240, 98, 146, 0.2); /* Matte Pink overlay, adjust opacity */
+    transition: background-color 0.3s ease; /* Match transition with image */
+}
