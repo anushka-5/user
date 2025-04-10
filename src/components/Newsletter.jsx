@@ -1,4 +1,4 @@
-
+import NewsLetterImg  from "../assets/newsletter-bg.jpeg";
 import React from "react";
 import {
     FaFacebookF,
@@ -6,11 +6,13 @@ import {
     FaInstagram,
     FaLinkedinIn,
 } from "react-icons/fa";
-import "./Newsletter.css";
+
 const Newsletter = () => {
     return (
         <div className="newsletter-section">
+            <img src ={NewsLetterImg} alt="NewsLetter" className="NewsLetter-bg.jpeg" />
             <div className="newsletter-content">
+      
                 <span className="small-text">Newsletter</span>
                 <span className="big-text">
                     Sign up for latest updates and offers

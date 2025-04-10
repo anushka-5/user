@@ -1,16 +1,16 @@
-.product-card {
+.recipe-card {
     cursor: pointer;
     width: calc(50% - 5px);
     margin-bottom: 20px;
 }
 
 @media (min-width: 768px) {
-    .product-card {
+    .recipe-card {
         width: calc(25% - 15px);
     }
 }
 
-.product-card .thumbnail {
+.recipe-card .thumbnail {
     width: 100%;
     height: 180px;
     background-color: #f8bbd8; /* Baby Pink background */
@@ -21,44 +21,44 @@
 }
 
 @media (min-width: 768px) {
-    .product-card .thumbnail {
+    .recipe-card .thumbnail {
         height: 350px;
     }
 }
 
-.product-card .thumbnail img {
+.recipe-card .thumbnail img {
     transition: all ease 0.3s;
     display: block;
     width: 100%;
 }
 
-.product-card .prod-details .name {
+.recipe-card .recipe-details .name {
     font-size: 14px;
     display: block;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    color: #8D6E63; /* Matte Brown for product name */
+    color: #8D6E63;
 }
 
 @media (min-width: 768px) {
-    .product-card .prod-details .name {
+    .recipe-card .recipe-details .name {
         font-size: 16px;
         margin-bottom: 10px;
     }
 }
 
-.product-card .prod-details .price {
+.recipe-card .recipe-details .price {
     font-size: 18px;
-    color: #880E4F; /* Matte Pink for price */
+    color: #880E4F;
 }
 
 @media (min-width: 768px) {
-    .product-card .prod-details .price {
+    .recipe-card .recipe-details .price {
         font-size: 24px;
     }
 }
 
-.product-card:hover .thumbnail img {
+.recipe-card:hover .thumbnail img {
     transform: scale(1.2);
 }

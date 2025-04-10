@@ -1,7 +1,7 @@
 import React from "react";
-import "./Footer.css";
+// import "../../../public/css/Footer.css";
 import { FaLocationArrow, FaMobileAlt, FaEnvelope } from "react-icons/fa";
-import Payment from "../../assets/payments.png.jpg";
+// import Payment from "../../assets/payments.png.jpg";
 
 const Footer = () => {
     return (
@@ -52,7 +52,7 @@ const Footer = () => {
                     <span className="text">
                         Pink Panther 2024. A dash of mischief, a whole lot of flavor.
                     </span>
-                    <img src={Payment} alt="Payment Methods" />
+                    {/* <img src={Payment} alt="Payment Methods" /> */}
                 </div>
             </div>
         </div>

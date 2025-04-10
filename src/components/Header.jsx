@@ -3,10 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { TbSearch } from "react-icons/tb";
 import { CgShoppingCart } from "react-icons/cg";
 import { AiOutlineHeart } from "react-icons/ai";
-import "./Header.css";
-import Search from "./Search/Search";
-import { Context } from '../../utils/context'; 
-import Cart from "../Cart/Cart";
+// import Search from "./Search/Search";
+// import Cart from "./Cart";
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -25,7 +23,6 @@ const Header = () => {
         window.addEventListener("scroll", handleScroll);
     }, []);
 
-    const { cartCount, showCart, setShowCart } = useContext(Context);
 
     return (
         <>
@@ -54,7 +51,7 @@ const Header = () => {
                     </div>
                 </div>
             </header>
-            {searchModal && <Search setSearchModal={setSearchModal} />}
+            {/* {searchModal && <Search setSearchModal={setSearchModal} />} */}
             {showCart && <Cart />}
         </>
     );

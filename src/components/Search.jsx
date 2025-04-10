@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
 import "./Search.css";
-import useFetch from "../../../hooks/useFetch";
+
 import { useNavigate } from "react-router-dom";
 
 const Search = ({ setSearchModal }) => {

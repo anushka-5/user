@@ -4,7 +4,7 @@ import { BsCartX } from "react-icons/bs";
 
 import CartItem from "./CartItem/CartItem";
 import { loadStripe } from "@stripe/stripe-js";
-import { makePaymentRequest } from "../../utils/api";
+import { makePaymentRequest } from "../utils/api";
 
 import "./Cart.css";
 
@@ -19,7 +19,7 @@ const Cart = () => {
         try {
             const stripe = await stripePromise;
             const res = await makePaymentRequest.post("/api/orders", {
-                products: cartItems,
+                recipes: cartItems,
             });
             await stripe.redirectToCheckout({
                 sessionId: res.data.stripeSession.id,
@@ -50,9 +50,9 @@ const Cart = () => {
                 {!cartItems.length && (
                     <div className="empty-cart">
                         <BsCartX />
-                        <span>No products in the cart.</span>
+                        <span>No yummies in the cart.</span>
                         <button className="return-cta" onClick={() => {}}>
-                            RETURN TO SHOP
+                            RETURN TO YUMMIES
                         </button>
                     </div>
                 )}
