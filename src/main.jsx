@@ -16,6 +16,8 @@ import "../public/css/Recipe.css";
 import "../public/css/Recipes.css";
 import "../public/css/Search.css";
 import "../public/css/SingleRecipe.css";
+import "../public/css/Order.css";
+
 import store from "./redux-store/store.js";
 import { Provider } from "react-redux";
 

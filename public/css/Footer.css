@@ -1,78 +1,8 @@
-/* Footer.css */
-
 .footer {
-    width: 100%;
-    padding: 40px 0;
-    background-color: #f9f9f9; /* Light background */
-    text-align: left; /* Adjust text alignment */
-}
-
-.footer .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-around; /* Distribute columns evenly */
-}
-
-.footer .footer-content .col {
-    flex: 1; /* Equal width for columns */
-    padding: 10px;
-}
-
-.footer .footer-content .title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #880E4F; /* Matte Pink title */
-    margin-bottom: 15px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.footer .footer-content .text {
-    font-size: 14px;
-    color: #8D6E63; /* Matte brown text */
-    margin-bottom: 8px;
-    font-family: 'Open Sans', sans-serif;
-    display: block; /* Make spans block elements */
-}
-
-.footer .footer-content .c-item {
-    display: flex;
-    align-items: flex-start; /* Align icons and text */
-    margin-bottom: 10px;
-}
-
-.footer .footer-content .c-item svg {
-    margin-right: 10px;
-    color: #F06292; /* Matte Pink icon */
-}
-
-.footer .bottom-bar {
-    background-color: #f9f9f9;
-    padding: 20px 20px;
+    background: linear-gradient(to right, #e1bee7, #b2ebf2);
     text-align: center;
-}
-
-.footer .bottom-bar .bottom-bar-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.footer .bottom-bar .bottom-bar-content .text {
-    font-size: 12px;
-    color: #8D6E63; /* Matte Brown bottom text */
-    font-family: 'Montserrat', sans-serif;
-}
-
-.footer .bottom-bar .bottom-bar-content .payment-logo {
-    height: 30px; /* Adjust logo height to match newsletter */
-    width: 50;
-}
-
-/* Add font links in the head of your HTML */
-/* <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet"> */
+    padding: 20px;
+    font-size: 16px;
+    color: #6a1b9a;
+    border-top: 2px solid #d1c4e9;
+  }

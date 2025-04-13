@@ -1,106 +1,84 @@
-/* ===== Root Theme Colors ===== */
-:root {
-    --baby-pink: #ffe6ea;
-    --matte-pink: #e39ca8;
-    --beige: #fff8f0;
-    --text-color: #333;
-    --border-radius: 12px;
-    --shadow: 0 4px 12px rgba(232, 163, 176, 0.15);
+/* Unicorn pastel background */
+body {
+  background: linear-gradient(135deg, #e6e6fa, #f3e5f5, #e1f5fe);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #4a148c;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Add sparkles using pseudo-elements */
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: sparkleShift 4s infinite ease-in-out;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+@keyframes sparkleShift {
+  0%, 100% {
+    background-position: 0 0;
   }
-  
-  /* ===== Global Reset ===== */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  50% {
+    background-position: 15px 15px;
   }
-  
-  body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--beige);
-    color: var(--text-color);
-    line-height: 1.6;
-    padding: 30px;
+}
+
+/* Clouds floating */
+body::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(white 20%, transparent 70%),
+    radial-gradient(white 20%, transparent 70%),
+    radial-gradient(white 20%, transparent 70%);
+  background-size: 150px 80px;
+  background-position:
+    20% 10%,
+    70% 30%,
+    40% 60%;
+  background-repeat: no-repeat;
+  animation: floatClouds 12s ease-in-out infinite;
+  opacity: 0.3;
+  z-index: -2;
+}
+
+@keyframes floatClouds {
+  0%, 100% {
+    background-position:
+      20% 10%,
+      70% 30%,
+      40% 60%;
   }
-  
-  /* ===== Layout Helpers ===== */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  50% {
+    background-position:
+      23% 8%,
+      67% 27%,
+      43% 58%;
   }
-  
-  /* ===== Cards / Section Boxes ===== */
-  .section-card {
-    background-color: var(--baby-pink);
-    padding: 25px;
-    border-radius: var(--border-radius);
-    margin-bottom: 30px;
-    box-shadow: var(--shadow);
-  }
-  
-  /* ===== Buttons ===== */
-  button, .btn {
-    background-color: var(--matte-pink);
-    color: white;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover, .btn:hover {
-    background-color: #d88e9e;
-  }
-  
-  /* ===== Input Fields ===== */
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  textarea {
-    width: 100%;
-    padding: 10px 12px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  /* ===== Section Layout (Side-by-Side) ===== */
-  .dashboard-sections {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    margin-top: 40px;
-  }
-  
-  .dashboard-section {
-    flex: 1;
-    min-width: 300px;
-    background-color: var(--baby-pink);
-    padding: 20px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-  }
-  
-  /* ===== Headings and Text ===== */
-  h1, h2, h3 {
-    margin-bottom: 20px;
-    color: var(--matte-pink);
-  }
-  
-  p {
-    margin-bottom: 16px;
-  }
-  
-  /* ===== Responsive Adjustments ===== */
-  @media (max-width: 768px) {
-    .dashboard-sections {
-      flex-direction: column;
-    }
-  
-    body {
-      padding: 20px;
-    }
-  }
+}
+button {
+  background-color: #f6e6d9; /* soft beige */
+  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #4a148c;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+button:hover {
+  background-color: #fce4ec; /* soft pink */
+  transform: scale(1.05);
+}

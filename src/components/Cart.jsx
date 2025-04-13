@@ -1,80 +1,84 @@
-import React, { useContext } from "react";
+// src/components/Cart.js
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { MdClose } from "react-icons/md";
 import { BsCartX } from "react-icons/bs";
-
-import CartItem from "./CartItem/CartItem";
-import { loadStripe } from "@stripe/stripe-js";
-import { makePaymentRequest } from "../utils/api";
-
-import "./Cart.css";
+import { useNavigate } from "react-router-dom";
+import { createOrderThunk } from "../redux-store/slices/orderSlice"; // Import order thunk
+// import { clearCart } from "../redux-store/slices/cartSlice"; // Import clearCart action
 
 const Cart = () => {
-    const { cartItems, setShowCart, cartSubTotal } = useContext(Context);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { cartItems, cartSubTotal } = useSelector((state) => state.cart);
 
-    const stripePromise = loadStripe(
-        process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
-    );
-
-    const handlePayment = async () => {
-        try {
-            const stripe = await stripePromise;
-            const res = await makePaymentRequest.post("/api/orders", {
-                recipes: cartItems,
-            });
-            await stripe.redirectToCheckout({
-                sessionId: res.data.stripeSession.id,
-            });
-        } catch (err) {
-            console.log(err);
+    const handleCheckout = async () => {
+        try { const token = localStorage.getItem("token");
+            const user = JSON.parse(localStorage.getItem("user"));
+            const recipeIds = cartItems.map((item) => item.id);
+    
+            if (!token || !user) {
+                alert("Please login first.");
+                return;
+            }
+             
+            const orderData = {
+                user: user.id,
+                paymentMode: "Cash on Delivery",
+                state: "Pending",
+            };
+            console.log("obeject data")
+            dispatch(createOrderThunk({orderData, recipeIds}));
+            console.log("test")
         }
+        catch (err) {
+            console.log(err.message)
+        }
+        
+      
     };
 
     return (
         <div className="cart-panel">
-            <div
-                className="opac-layer"
-                onClick={() => setShowCart(false)}
-            ></div>
+            {/* <div className="opac-layer"></div> */}
             <div className="cart-content">
                 <div className="cart-header">
                     <span className="heading">Shopping Cart</span>
-                    <span
-                        className="close-btn"
-                        onClick={() => setShowCart(false)}
-                    >
-                        <MdClose className="close-btn" />
-                        <span className="text">close</span>
+                    <span className="close-btn">
+                        <MdClose />
+                        <span className="text">Close</span>
                     </span>
                 </div>
 
-                {!cartItems.length && (
+                {!cartItems.length ? (
                     <div className="empty-cart">
                         <BsCartX />
                         <span>No yummies in the cart.</span>
-                        <button className="return-cta" onClick={() => {}}>
+                        <button className="return-cta" onClick={() => navigate("/")}>
                             RETURN TO YUMMIES
                         </button>
                     </div>
-                )}
-
-                {!!cartItems.length && (
+                ) : (
                     <>
-                        <CartItem />
+                        {cartItems.map((item) => (
+                            <div key={item.id} className="cart-item">
+                                <h4>{item.title}</h4>
+                                <img
+                                    src={`http://localhost:1337${item.img?.url}`}
+                                    alt={item.title}
+                                />
+                                <p>Price: ₹{item.price}</p>
+                                <p>Quantity: {item.quantity}</p>
+                            </div>
+                        ))}
                         <div className="cart-footer">
                             <div className="subtotal">
                                 <span className="text">Subtotal:</span>
-                                <span className="text total">
-                                    &#8377;{cartSubTotal}
-                                </span>
+                                <span className="text total">₹{cartSubTotal}</span>
                             </div>
-                            <div className="button">
-                                <button
-                                    className="checkout-cta"
-                                    onClick={handlePayment}
-                                >
-                                    Checkout
-                                </button>
-                            </div>
+                            <button className="checkout-cta" onClick={handleCheckout}>
+                                Checkout (Cash on Delivery)
+                            </button>
                         </div>
                     </>
                 )}

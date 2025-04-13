@@ -1,1 +1,8 @@
 /* @import "../../css-config/mixins.scss"; */
+
+.home {
+    background-color: #fff0f5;
+    padding: 40px;
+    font-size: 18px;
+    color: #4a148c;
+  }

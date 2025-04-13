@@ -98,26 +98,38 @@
 // };
 
 // export default SingleRecipe;
-import React from "react";
+// import React from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux-store/slices/cartSlice";
 
 const SingleRecipe = ({ recipe }) => {
-  return (
-    <div className="recipe-card">
-      <h4>{recipe.title}</h4>
-      {console.log(recipe)}
-      {recipe.img && recipe.img && (
-        <img
-          src={`http://localhost:1337${recipe.img.url}`}
-          alt={recipe.title}
-          style={{ width: "150px", height: "100px" }}
-        />
-      )}
-      <p>Price: ₹{recipe.price}</p>
-      <p>Description: {recipe.desc}</p>
-    </div>
-   
-    
-  );
+    const dispatch = useDispatch();
+
+    const handleAddToCart = () => {
+      dispatch(addToCart({
+          id: recipe.id,
+          title: recipe.title,
+          price: recipe.price,
+          img: recipe.img,
+      }));
+  };
+  
+
+    return (
+        <div className="recipe-card">
+            <h4>{recipe.title}</h4>
+            {recipe.img && (
+                <img
+                    src={`http://localhost:1337${recipe.img.url}`}
+                    alt={recipe.title}
+                    style={{ width: "150px", height: "100px" }}
+                />
+            )}
+            <p>Price: ₹{recipe.price}</p>
+            <p>Description: {recipe.desc}</p>
+            <button onClick={handleAddToCart}>Add to Cart</button>
+        </div>
+    );
 };
 
 export default SingleRecipe;
